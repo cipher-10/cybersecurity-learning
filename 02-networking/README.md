@@ -1,70 +1,95 @@
-# Learning Roadmap
+# 02 — Networking for Cybersecurity
 
-## Phase 1 — Foundations
+Networking is the foundation for SOC analysis, VAPT, cloud security, and incident response.
 
-- CIA triad
-- Threat, vulnerability, risk and exploit
-- Authentication vs authorization
-- Security controls
-- Common attack categories
+## Learning Objectives
 
-## Phase 2 — Networking
+- Explain OSI and TCP/IP models
+- Understand IPv4, subnetting, routing, and NAT
+- Distinguish TCP and UDP
+- Identify common ports and protocols
+- Understand DNS, DHCP, ARP, and ICMP
+- Read HTTP/HTTPS traffic
+- Use Nmap for authorized discovery and enumeration
+- Use Wireshark to analyze packets
+- Troubleshoot connectivity with native OS tools
 
-- OSI and TCP/IP models
-- IPv4, subnetting and routing
-- TCP vs UDP
-- Common ports and protocols
-- DNS, DHCP, ARP, ICMP
-- HTTP/HTTPS
-- Wireshark and packet analysis
+## Study Order
 
-## Phase 3 — Linux + Windows
+1. OSI model
+2. TCP/IP model
+3. IPv4 addressing
+4. Subnetting
+5. TCP vs UDP
+6. Ports and protocols
+7. DNS / DHCP / ARP / ICMP
+8. Routing and NAT
+9. HTTP / HTTPS
+10. Nmap
+11. Wireshark
+12. Troubleshooting
 
-- Linux filesystem and permissions
-- Processes, services and networking commands
-- Bash fundamentals
-- Windows Event Viewer
-- PowerShell fundamentals
-- Windows authentication and security logs
+## Core Commands
 
-## Phase 4 — SOC / Blue Team
+### Windows PowerShell
 
-- Log collection and normalization
-- SIEM fundamentals
-- Alert triage
-- IOC analysis
-- Incident-response lifecycle
-- Sigma rules
-- MITRE ATT&CK mapping
+```powershell
+ipconfig /all
+ping 127.0.0.1
+tracert example.com
+nslookup example.com
+Test-NetConnection example.com -Port 443
+Get-NetTCPConnection
+```
 
-## Phase 5 — Web Security + VAPT
+### Linux
 
-- HTTP request/response anatomy
-- Burp Suite
-- OWASP Top 10
-- Reconnaissance and enumeration
-- Vulnerability validation
-- Evidence collection
-- Professional reporting
+```bash
+ip addr
+ip route
+ping -c 4 127.0.0.1
+traceroute example.com
+ss -tulpen
+dig example.com
+curl -I https://example.com
+```
 
-## Phase 6 — Forensics + Cloud
+### Nmap — authorized targets only
 
-- File and disk artifacts
-- Memory concepts
-- Timeline analysis
-- AWS/Azure identity and logging
-- CloudTrail / CloudWatch concepts
-- Least privilege and secrets management
+```bash
+nmap -sV <LAB_IP>
+nmap -p 22,80,443 <LAB_IP>
+nmap -sC -sV <LAB_IP>
+```
 
-## Phase 7 — Automation + Projects
+## Portfolio Labs
 
-- Python fundamentals
-- File and log parsing
-- APIs and JSON
-- Security automation
-- Detection engineering
-- Build, document and test portfolio projects
+- [ ] Identify my lab network and interfaces
+- [ ] Capture and explain an ICMP exchange
+- [ ] Resolve a domain and document DNS traffic
+- [ ] Compare TCP and UDP behavior
+- [ ] Enumerate a local training VM with Nmap
+- [ ] Capture an HTTP request in Wireshark
+- [ ] Investigate a failed TCP connection
+- [ ] Write a network troubleshooting report
 
-## Rule
+## Evidence Standard
 
-For every phase: learn → lab → document → publish evidence → review.
+For each lab, publish:
+
+- Objective
+- Lab topology
+- Commands/tools used
+- Sanitized output or screenshots
+- Analysis of what happened
+- Security relevance
+- Defensive observation
+- Lessons learned
+
+## Safety
+
+Use Nmap, packet capture, and enumeration only against systems you own or environments where you have explicit authorization. Do not scan public targets without permission.
+
+## Completion Rule
+
+Do not mark a networking topic complete after watching a lecture alone. Explain the concept, demonstrate it in a controlled lab, and document the evidence.
